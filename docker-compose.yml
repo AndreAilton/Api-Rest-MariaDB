@@ -14,7 +14,7 @@ services:
   mariadb:
     image: mariadb
     restart: always
-    container_name: bdmariadb1
+    container_name: bdagenda1
     ports:
       - "${DB_PORT}:3306"
     environment:
