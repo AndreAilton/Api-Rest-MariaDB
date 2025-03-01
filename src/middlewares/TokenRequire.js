@@ -5,11 +5,11 @@ import Admin from '../models/Admin.js'
 export default async (req, res, next) => {
     const {authorization} = req.headers;
 
-    // if (!authorization) {
-    //     return res.status(401).json({
-    //         errors: ['Login Requerido']
-    //     })
-    // }
+    if (!authorization) {
+        return res.status(401).json({
+            errors: ['Login Requerido']
+        })
+    }
     const [ text, token] = authorization.split(' ');
 
     try {
