@@ -39,7 +39,7 @@ class app {
         // this.app.use("/tarefas", TarefasRoutes);
         // this.app.use("/admin", AdminRoutes);
         // this.app.use("*", (req, res) => res.status(404).json({ error: "Pagina Não Encontada" }));
-        this.app.use("/api1", router); // Prefixo global para as rotas
+        this.app.use(router); // Prefixo global para as rotas
 
     }
 }
