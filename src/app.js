@@ -7,6 +7,7 @@ import TokenRoutes from "./routes/TokenRoutes.js";
 import FileRoutes from "./routes/FileRoutes.js";
 import TarefasRoutes from "./routes/TarefaRoutes.js";
 import AdminRoutes from "./routes/AdminRoutes.js";
+import router from "./routes/index.js"; 
 import './database/index.js';
 dotenv.config();
 
@@ -31,13 +32,14 @@ class app {
 }
 
     routes() {
-        this.app.get("/", (req, res) => res.json("Bem Vindo a Api"));
-        this.app.use("/users", UserRoutes);
-        this.app.use("/token", TokenRoutes);
-        this.app.use("/files", FileRoutes);
-        this.app.use("/tarefas", TarefasRoutes);
-        this.app.use("/admin", AdminRoutes);
-        this.app.use("*", (req, res) => res.status(404).json({ error: "Pagina Não Encontada" }));
+        // this.app.get("/", (req, res) => res.json("Bem Vindo a Api"));
+        // this.app.use("/users", UserRoutes);
+        // this.app.use("/token", TokenRoutes);
+        // this.app.use("/files", FileRoutes);
+        // this.app.use("/tarefas", TarefasRoutes);
+        // this.app.use("/admin", AdminRoutes);
+        // this.app.use("*", (req, res) => res.status(404).json({ error: "Pagina Não Encontada" }));
+        this.app.use("/api1", router); // Prefixo global para as rotas
 
     }
 }
