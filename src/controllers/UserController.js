@@ -1,6 +1,7 @@
 import User from '../models/User.js';
 import File from '../models/Files.js';
 import Tarefas from '../models/Tarefas.js'; // Importando o model de Tarefas
+import Categoria from '../models/Categoria.js'; // Importando o model de Categoria
 
 class UserController {
     async store(req, res) {
@@ -26,9 +27,10 @@ class UserController {
                 attributes: ['id', 'name', 'email','status'],
                 include: [
                     { model: File },  // Incluindo files do usuário
-                    { model: Tarefas } // Incluindo as Tarefas do usuário
+                    { model: Tarefas },
+                    { model: Categoria }
                 ],
-                order: [['id', 'DESC'], [File, 'id', 'DESC'], [Tarefas, 'id', 'DESC']]
+                order: [['id', 'DESC'], [File, 'id', 'DESC'], [Tarefas, 'id', 'DESC'], [Categoria, 'id', 'DESC']]
             });
 
             return res.status(200).json(users);
@@ -47,9 +49,10 @@ class UserController {
                     attributes: ['id', 'name', 'email','status'],
                     include: [
                         { model: File },  // Incluindo files do usuário
-                        { model: Tarefas } // Incluindo as Tarefas do usuário
+                        { model: Tarefas },// Incluindo as Tarefas do usuário
+                        { model: Categoria }
                     ],
-                    order: [['id', 'DESC'], [File, 'id', 'DESC'], [Tarefas, 'id', 'DESC']],
+                    order: [['id', 'DESC'], [File, 'id', 'DESC'], [Tarefas, 'id', 'DESC'], [Categoria, 'id', 'DESC']],
                 });
 
                 if (user.files) {
@@ -67,9 +70,10 @@ class UserController {
                 attributes: ['id', 'name', 'email','status'],
                 include: [
                     { model: File },  // Incluindo files do usuário
-                    { model: Tarefas } // Incluindo as Tarefas do usuário
+                    { model: Tarefas },
+                    { model: Categoria }
                 ],
-                order: [['id', 'DESC'], [File, 'id', 'DESC'], [Tarefas, 'id', 'DESC']],
+                order: [['id', 'DESC'], [File, 'id', 'DESC'], [Tarefas, 'id', 'DESC'], [Categoria, 'id', 'DESC']],
             });
             if (user.status === false){
                  return res.status(400).json({sucess: false, message:"usuario desativado"});

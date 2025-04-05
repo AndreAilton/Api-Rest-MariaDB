@@ -16,7 +16,7 @@ class TokenController{
         }
 
         if (!(await user.checkPassword(password))) {
-            return res.status(401).json({ error: 'Senha Invalida' });
+            return res.status(401).json({ error: 'Usuario ou Senha incorretos' });
         }
         
         const token = jwt.sign({ id: user.id, email: user.email }, process.env.TOKEN_SECRET, {

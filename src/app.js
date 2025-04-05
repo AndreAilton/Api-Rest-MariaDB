@@ -7,6 +7,7 @@ import TokenRoutes from "./routes/TokenRoutes.js";
 import FileRoutes from "./routes/FileRoutes.js";
 import TarefasRoutes from "./routes/TarefaRoutes.js";
 import AdminRoutes from "./routes/AdminRoutes.js";
+import cors from "cors";
 import router from "./routes/index.js"; 
 import './database/index.js';
 dotenv.config();
@@ -20,6 +21,7 @@ import { fileURLToPath } from 'url';
 class app {
     constructor() {
         this.app = express();
+        this.app.use(cors());
         this.middlewares();
         this.routes();
     }

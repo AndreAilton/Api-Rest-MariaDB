@@ -4,8 +4,9 @@ import User from "../models/User.js";
 import Files from "../models/Files.js";
 import Tarefa from "../models/Tarefas.js";
 import Admin from "../models/Admin.js";
+import Categoria from "../models/Categoria.js";
 
-const models = [User, Files, Tarefa, Admin];
+const models = [User, Files, Tarefa, Admin, Categoria];
 const connection = new Sequelize(databaseConfig);
 
 (async () => {

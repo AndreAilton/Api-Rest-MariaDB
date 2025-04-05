@@ -15,7 +15,7 @@ class TarefasController {
     try {
       const tarefas = await Tarefa.findAll({
         where: { user_id: req.userId },
-        attributes: ['id', 'tittle', 'description', 'done', 'category'],
+        attributes: ['id', 'tittle', 'description', 'done', 'category', 'createdAt', 'updatedAt'],
         order: [['id', 'DESC']],
       });
 

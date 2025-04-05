@@ -67,6 +67,7 @@ export default class Usuarios extends Model {
     static associate(models) {
         this.hasMany(models.Files, { foreignKey: 'user_id' });
         this.hasMany(models.Tarefas, { foreignKey: 'user_id' });
+        this.hasMany(models.Categoria, { foreignKey: 'user_id' });
       }
       
 }
