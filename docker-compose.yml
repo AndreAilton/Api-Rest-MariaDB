@@ -1,29 +1,37 @@
 services:
-  # api:
-  #   container_name: minha-api
-  #   restart: always
-  #   build: .
-  #   ports:
-  #     - "4000:3000"
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - mariadb  
-  #   networks:
-  #     - minha-rede
   mariadb:
     image: mariadb
     restart: always
-    container_name: bdagenda1
+    container_name: bd-AgendaApp
     ports:
-      - "${DB_PORT}:3306"
+      - "${DB_PORT_LOCAL}:3306"   
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASS}  # Coloquei entre aspas
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
       MYSQL_DATABASE: ${DB_NAME}
     volumes:
       - mariadb_data:/var/lib/mysql
+    networks:
+      - minha-rede
+
+  api:
+    build: .
+    container_name: api-AgendaApp
+    restart: always
+    ports:
+      - "${API_PORT}:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=docker  
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - mariadb
+    networks:
+      - minha-rede
 
 volumes:
   mariadb_data:
 
-
+networks:
+  minha-rede:
