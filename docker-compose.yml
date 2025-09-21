@@ -3,7 +3,7 @@ services:
     image: mariadb
     restart: always
     expose:
-      - "3306"   
+      - ${DB_PORT}  
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
       MYSQL_DATABASE: ${DB_NAME}
@@ -16,7 +16,7 @@ services:
     build: .
     restart: always
     expose:
-      - "3000"
+      - ${DB_PORT_LOCAL}
     env_file:
       - .env
     environment:
