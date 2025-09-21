@@ -2,7 +2,6 @@ services:
   mariadb:
     image: mariadb
     restart: always
-    container_name: bd-AgendaApp
     expose:
       - "3306"   
     environment:
@@ -15,7 +14,6 @@ services:
 
   api:
     build: .
-    container_name: api-AgendaApp
     restart: always
     expose:
       - "3000"
