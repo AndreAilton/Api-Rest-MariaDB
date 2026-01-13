@@ -2,9 +2,8 @@ services:
   mariadb:
     image: mariadb
     restart: always
-    container_name: bd-AgendaApp
-    ports:
-      - "${DB_PORT_LOCAL}:3306"   
+    expose:
+      - ${DB_PORT}  
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
       MYSQL_DATABASE: ${DB_NAME}
@@ -15,10 +14,9 @@ services:
 
   api:
     build: .
-    container_name: api-AgendaApp
     restart: always
-    ports:
-      - "${API_PORT}:3000"
+    expose:
+      - ${DB_PORT_LOCAL}
     env_file:
       - .env
     environment:
